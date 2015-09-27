@@ -3,7 +3,7 @@ Dale Slack Bot
 
 # Setup
 * `npm install`
-* add `secrets.py` at top-level directory (ask for secrets)
+* add the `SLACKBOT_TOKEN` environment variable on your system (log into Heroku, access nameless-mountain-4460, access settings, and view Config Variables)
 
 # Contributing
 1. `heroku login` user: chicago.prestige.world.wide@gmail.com password: ask

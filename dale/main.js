@@ -8,7 +8,7 @@
   var secrets = require('../secrets.js');
   Slack = require('..');
 
-  token = secrets.token;
+  token = process.env.SLACKBOT_TOKEN;
 
   autoReconnect = true;
 
