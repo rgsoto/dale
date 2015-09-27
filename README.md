@@ -1,6 +1,10 @@
 # dale
 Dale Slack Bot
 
+# Setup
+* `npm install`
+* add `secrets.py` at top-level directory (ask for secrets)
+
 # Contributing
 1. `heroku login` user: chicago.prestige.world.wide@gmail.com password: ask
 2. `heroku git:clone -a nameless-mountain-4460`
