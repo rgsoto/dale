@@ -132,7 +132,7 @@ Client = (function(_super) {
               _this.connected = false;
               return _this.reconnect();
             }
-          }, 5000);
+          }, process.env.PORT || 5000);
         };
       })(this));
       this.ws.on('message', (function(_this) {
