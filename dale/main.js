@@ -47,6 +47,7 @@
       }
       return results;
     })();
+		console.log("Process is running on port: " + process.env.PORT);
     console.log("Welcome to Slack. You are @" + slack.self.name + " of " + slack.team.name);
     console.log('You are in: ' + channels.join(', '));
     console.log('As well as: ' + groups.join(', '));
