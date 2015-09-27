@@ -5,7 +5,6 @@
   var scoreKeeper = require('./scoreKeeper.js');
   var yolo = require('./yolo.js');
 
-  var secrets = require('../secrets.js');
   Slack = require('..');
 
   token = process.env.SLACKBOT_TOKEN;
