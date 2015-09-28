@@ -1,1 +1,1 @@
-worker: node dale/main.js
+web: node dale/main.js
