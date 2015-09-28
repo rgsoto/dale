@@ -37,7 +37,7 @@ module.exports = function(slackInst) {
     channelName = (channel != null ? channel.is_channel : void 0) ? '#' : '';
     channelName = channelName + (channel ? channel.name : 'UNKNOWN_CHANNEL');
     userName = (user != null ? user.name : void 0) != null ? "@" + user.name : "UNKNOWN_USER";
-    console.log("Yolo received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
+    console.log("Dale Quotes received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
     if (type === 'message' && (text != null) && (channel != null)) {
       if (text.toLowerCase().indexOf(":dale:") > -1) {
         response = quotes[Math.floor(Math.random()*quotes.length)];

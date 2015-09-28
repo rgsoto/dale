@@ -4,6 +4,7 @@
 	var WebSocketServer = require('ws').Server
 	  , wss = new WebSocketServer({port: process.env.PORT || 5000});
 
+  var osu = require('./osu.js');
   var quotes = require('./quotes.js');
   var scoreKeeper = require('./scoreKeeper.js');
   var yolo = require('./yolo.js');
@@ -18,6 +19,7 @@
 
   slack = new Slack(token, autoReconnect, autoMark);
 
+  osu(slack);
   quotes(slack);
   scoreKeeper(slack);
   yolo(slack);
