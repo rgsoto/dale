@@ -117,6 +117,7 @@ module.exports = function(robot) {
     userName = (user != null ? user.name : void 0) != null ? "@" + user.name : "UNKNOWN_USER";
     console.log("ScoreKeeper received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
     if (type === 'message' && (text != null) && (channel != null)) {
+		  // First attempt to match "<name>++"
       var match = /([\w\s]+)([\W\S]*)?(\+\+)$/i.exec(text);
       if(match) {
         var from, name, newScore;
@@ -125,22 +126,11 @@ module.exports = function(robot) {
         if (newScore != null) {
           return channel.send(name + " has " + newScore + " points.");
         }
+        return console.log("ScoreKeeper attempted to add for: " + name + ", however newScore was set to null");
       }
-    }
-  });
 
-  robot.on('message', function(message){
-    var channel, channelError, channelName, errors, response, text, textError, ts, type, typeError, user, userName;
-    channel = robot.getChannelGroupOrDMByID(message.channel);
-    user = robot.getUserByID(message.user);
-    response = '';
-    type = message.type, ts = message.ts, text = message.text;
-    channelName = (channel != null ? channel.is_channel : void 0) ? '#' : '';
-    channelName = channelName + (channel ? channel.name : 'UNKNOWN_CHANNEL');
-    userName = (user != null ? user.name : void 0) != null ? "@" + user.name : "UNKNOWN_USER";
-    console.log("Received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
-    if (type === 'message' && (text != null) && (channel != null)) {
-      var match = /([\w\s]+)([\W\S]*)?(\-\-)$/i.exec(text);
+		  // Next attempt to match "<name>--"
+      match = /([\w\s]+)([\W\S]*)?(\-\-)$/i.exec(text);
       if(match) {
         var from, name, newScore;
         name = match[1].trim().toLowerCase();
@@ -148,6 +138,7 @@ module.exports = function(robot) {
         if (newScore != null) {
           return channel.send(name + " has " + newScore + " points.");
         }
+        return console.log("ScoreKeeper attempted to subtract for: " + name + ", however newScore was set to null");
       }
     }
   });
