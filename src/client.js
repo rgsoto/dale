@@ -133,7 +133,7 @@ Client = (function(_super) {
               _this.connected = false;
               return _this.reconnect();
             }
-          }, process.env.PORT || 5000);
+          }, 5000);
         };
       })(this));
       this.ws.on('message', (function(_this) {

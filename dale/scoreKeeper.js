@@ -115,7 +115,7 @@ module.exports = function(robot) {
     channelName = (channel != null ? channel.is_channel : void 0) ? '#' : '';
     channelName = channelName + (channel ? channel.name : 'UNKNOWN_CHANNEL');
     userName = (user != null ? user.name : void 0) != null ? "@" + user.name : "UNKNOWN_USER";
-    console.log("Received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
+    console.log("ScoreKeeper received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
     if (type === 'message' && (text != null) && (channel != null)) {
       var match = /([\w\s]+)([\W\S]*)?(\+\+)$/i.exec(text);
       if(match) {
