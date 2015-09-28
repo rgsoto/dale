@@ -74,6 +74,11 @@ ScoreKeeper = (function() {
   };
 
   ScoreKeeper.prototype.validate = function(user, from) {
+		console.log("in validate: user, from");
+		console.log(user);
+		console.log(from);
+		console.log(user !== from);
+		console.log(user != from);
     // return user !== from && user !== "" && !this.isSpam(user, from);
     return user !== from && user !== "";
   };
@@ -114,7 +119,7 @@ module.exports = function(robot) {
     type = message.type, ts = message.ts, text = message.text;
     channelName = (channel != null ? channel.is_channel : void 0) ? '#' : '';
     channelName = channelName + (channel ? channel.name : 'UNKNOWN_CHANNEL');
-    userName = (user != null ? user.name : void 0) != null ? "@" + user.name : "UNKNOWN_USER";
+    userName = (user != null ? user.name : void 0) != null ? user.name : "UNKNOWN_USER";
     console.log("ScoreKeeper received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
     if (type === 'message' && (text != null) && (channel != null)) {
 		  // First attempt to match "<name>++"
@@ -122,7 +127,7 @@ module.exports = function(robot) {
       if(match) {
         var from, name, newScore;
         name = match[1].trim().toLowerCase();
-        newScore = scoreKeeper.add(name, user);
+        newScore = scoreKeeper.add(name, userName);
         if (newScore != null) {
           return channel.send(name + " has " + newScore + " points.");
         }
@@ -134,7 +139,7 @@ module.exports = function(robot) {
       if(match) {
         var from, name, newScore;
         name = match[1].trim().toLowerCase();
-        newScore = scoreKeeper.subtract(name, user);
+        newScore = scoreKeeper.subtract(name, userName);
         if (newScore != null) {
           return channel.send(name + " has " + newScore + " points.");
         }
