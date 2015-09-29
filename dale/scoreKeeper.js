@@ -7,16 +7,16 @@ ScoreKeeper = (function() {
       scoreLog: {},
       scores: {}
     };
-    // this.robot.on('loaded', (function(_this) {
-    //   console.log('robot loaded');
-    //   // return function() {
-    //   //   var base, base1;
-    //   //   (base = _this.robot.data).scoreLog || (base.scoreLog = {});
-    //   //   (base1 = _this.robot.data).scores || (base1.scores = {});
-    //   //   _this.cache.scores = _this.robot.data.scores || {};
-    //   //   return _this.cache.scoreLog = _this.robot.data.scoreLog || {};
-    //   // };
-    // })(this));
+
+    this.robot.on('open', (function(_this) {
+       return function() {
+         var base, base1;
+         (base = _this.robot.data.scoreKeeper).scoreLog || (base.scoreLog = {});
+         (base1 = _this.robot.data.scoreKeeper).scores || (base1.scores = {});
+         _this.cache.scores = _this.robot.data.scoreKeeper.scores || {};
+         return _this.cache.scoreLog = _this.robot.data.scoreKeeper.scoreLog || {};
+       };
+    })(this));
   }
 
   ScoreKeeper.prototype.getUser = function(user) {
