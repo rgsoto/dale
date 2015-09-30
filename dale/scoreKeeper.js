@@ -27,8 +27,9 @@ ScoreKeeper = (function() {
 
   ScoreKeeper.prototype.saveUser = function(user, from) {
     this.saveScoreLog(user, from);
-    // this.robot.data.scores[user] = this.cache.scores[user];
-    // this.robot.data.scoreLog[user] = this.cache.scoreLog[user];
+    this.robot.data.scoreKeeper.scores[user] = this.cache.scores[user];
+    this.robot.data.scoreKeeper.scoreLog[user] = this.cache.scoreLog[user];
+		this.robot.persist.writePersistFile(this.robot.data)
     return this.cache.scores[user];
   };
 

@@ -21,8 +21,8 @@
   slack = new Slack(token, autoReconnect, autoMark);
 
   // Set up persistence
-  var persist = require('./persist.js');
-  persist.readPersistFile(function(persistData) {
+  slack.persist = require('./persist.js');
+  slack.persist.readPersistFile(function(persistData) {
     slack.data = persistData;
     console.log(slack.data);
   });
