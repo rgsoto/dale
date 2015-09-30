@@ -5,7 +5,8 @@ module.exports = {
       if(err) {
         console.log("Error in writing persist file: " + err);
       } else {
-        console.log("Wrote persist file successfully");
+        console.log("Wrote persist file successfully, persist.json now:");
+				console.log(JSON.stringify(obj));
       }
     });
   },
