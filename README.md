@@ -24,7 +24,7 @@ Dale Slack Bot
 
 # Dale template script
 `dale/template.js`
-```
+```javascript
 // If necessary to define a class, begin with that, otherwise skip to module.exports
 var TemplateClass;
 
