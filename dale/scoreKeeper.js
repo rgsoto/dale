@@ -124,7 +124,7 @@ module.exports = function(robot) {
     console.log("ScoreKeeper received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
     if (type === 'message' && (text != null) && (channel != null)) {
 		  // First attempt to match "<name>++"
-      var match = /([\w\s]+)([\W\S]*)?(\+\+)$/i.exec(text);
+      var match = (?:)/([\w\s]+)([\W\S]*)?(\+\+)$/i.exec(text);
       if(match) {
         var from, name, newScore;
         name = match[1].trim().toLowerCase();
@@ -136,7 +136,7 @@ module.exports = function(robot) {
       }
 
 		  // Next attempt to match "<name>--"
-      match = /([\w\s]+)([\W\S]*)?(\-\-)$/i.exec(text);
+      match = (?:)/([\w\s]+)([\W\S]*)?(\-\-)$/i.exec(text);
       if(match) {
         var from, name, newScore;
         name = match[1].trim().toLowerCase();
